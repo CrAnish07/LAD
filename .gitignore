@@ -1,13 +1,1 @@
 .env
-# Logs
-*.log
-*.log.*
-daemon/logs/
-
-# Python cache
-__pycache__/
-*.pyc
-
-# Images (if not needed in repo)
-*.webp
-

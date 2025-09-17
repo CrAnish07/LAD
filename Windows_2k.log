@@ -1,0 +1,342 @@
+CBS    Loaded Servicing Stack v6.1.7601.23505 with Core: C:\Windows\winsxs\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_6.1.7601.23505_none_681aa442f6fed7f0\cbscore.dll
+CSI    00000001@2016/9/27:20:30:31.455 WcpInitialize (wcp.dll version 0.0.0.6) called (stack @0x7fed806eb5d @0x7fef9fb9b6d @0x7fef9f8358f @0xff83e97c @0xff83d799 @0xff83db2f)
+CSI    00000002@2016/9/27:20:30:31.458 WcpInitialize (wcp.dll version 0.0.0.6) called (stack @0x7fed806eb5d @0x7fefa006ade @0x7fef9fd2984 @0x7fef9f83665 @0xff83e97c @0xff83d799)
+CSI    00000003@2016/9/27:20:30:31.458 WcpInitialize (wcp.dll version 0.0.0.6) called (stack @0x7fed806eb5d @0x7fefa1c8728 @0x7fefa1c8856 @0xff83e474 @0xff83d7de @0xff83db2f)
+CBS    Ending TrustedInstaller initialization.
+CBS    Starting the TrustedInstaller main loop.
+CBS    TrustedInstaller service starts successfully.
+CBS    SQM: Initializing online with Windows opt-in: False
+CBS    SQM: Cleaning up report files older than 10 days.
+CBS    SQM: Requesting upload of all unsent reports.
+CBS    SQM: Failed to start upload with file pattern: C:\Windows\servicing\sqm\*_std.sqm, flags: 0x2 [HRESULT = 0x80004005 - E_FAIL]
+CBS    SQM: Failed to start standard sample upload. [HRESULT = 0x80004005 - E_FAIL]
+CBS    SQM: Queued 0 file(s) for upload with pattern: C:\Windows\servicing\sqm\*_all.sqm, flags: 0x6
+CBS    SQM: Warning: Failed to upload all unsent reports. [HRESULT = 0x80004005 - E_FAIL]
+CBS    No startup processing required, TrustedInstaller service was not set as autostart, or else a reboot is still pending.
+CBS    NonStart: Checking to ensure startup processing was not required.
+CSI    00000004 IAdvancedInstallerAwareStore_ResolvePendingTransactions (call 1) (flags = 00000004, progress = NULL, phase = 0, pdwDisposition = @0xb6fd90
+CSI    00000005 Creating NT transaction (seq 1), objectname [6]"(null)"
+CSI    00000006 Created NT transaction (seq 1) result 0x00000000, handle @0x214
+CSI    00000007@2016/9/27:20:30:31.462 CSI perf trace:
+CBS    NonStart: Success, startup processing not required as expected.
+CBS    Startup processing thread terminated normally
+CSI    00000008 CSI Store 4991456 (0x00000000004c29e0) initialized
+CBS    Session: 30546173_4261722401 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546173_4262462443 initialized by client WindowsUpdateAgent.
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Expecting attribute name [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Failed to get next element [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Session: 30546173_4267072707 initialized by client WindowsUpdateAgent.
+CBS    Failed to internally open package. [HRESULT = 0x800f0805 - CBS_E_INVALID_PACKAGE]
+CBS    Session: 30546173_4268042763 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546173_4271022933 initialized by client WindowsUpdateAgent.
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Expecting attribute name [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Failed to get next element [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Session: 30546173_4275933214 initialized by client WindowsUpdateAgent.
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Expecting attribute name [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Failed to get next element [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Session: 30546173_4280593480 initialized by client WindowsUpdateAgent.
+CBS    Failed to internally open package. [HRESULT = 0x800f0805 - CBS_E_INVALID_PACKAGE]
+CBS    Session: 30546173_4280603481 initialized by client WindowsUpdateAgent.
+CBS    Failed to internally open package. [HRESULT = 0x800f0805 - CBS_E_INVALID_PACKAGE]
+CBS    Session: 30546173_4280613482 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3121255~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546173_4286503818 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2656356~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 80, CurrentState:112
+CBS    Session: 30546173_4286853838 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3108664~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546173_4286873840 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3115858~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 80, CurrentState:112
+CBS    Session: 30546173_4289083966 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546174_10517608 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3019978~31bf3856ad364e35~amd64~~6.1.1.2, ApplicableState: 80, CurrentState:0
+CBS    Session: 30546174_10537609 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2607047~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 0, CurrentState:0
+CBS    Session: 30546174_18178046 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546174_18398059 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546174_23668360 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2620704~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_23938376 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Windows-PlatformUpdate-Win7-SRV08R2-Package-TopLevel~31bf3856ad364e35~amd64~~7.1.7601.16492, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_24168389 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546174_28288625 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Hyper-V-Integration-Services-Package~31bf3856ad364e35~amd64~~6.3.9600.17681, ApplicableState: 112, CurrentState:0
+CBS    Session: 30546174_43479493 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Windows-RDP-BlueIP-Package-TopLevel~31bf3856ad364e35~amd64~~7.2.7601.16415, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_43599500 initialized by client WindowsUpdateAgent.
+CBS    Failed to internally open package. [HRESULT = 0x800f0805 - CBS_E_INVALID_PACKAGE]
+CBS    Session: 30546174_49119816 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2809900~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 0, CurrentState:0
+CBS    Session: 30546174_49199821 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3150220~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_49409833 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3175024~31bf3856ad364e35~amd64~~6.1.2.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_90722196 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Hyper-V-Integration-Services-Package~31bf3856ad364e35~amd64~~6.3.9600.17388, ApplicableState: 112, CurrentState:0
+CBS    Session: 30546174_90802200 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546174_90832202 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2676562~31bf3856ad364e35~amd64~~6.1.1.3, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_90912206 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2970228~31bf3856ad364e35~amd64~~6.1.1.2, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_91002212 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2512715~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 0, CurrentState:0
+CBS    Session: 30546174_94722424 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2871997~31bf3856ad364e35~amd64~~6.1.2.5, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_97232568 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3164035~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_97282571 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546174_97402578 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2574819~31bf3856ad364e35~amd64~~6.1.2.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_97982611 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Windows-RDP-WinIP-Package-TopLevel~31bf3856ad364e35~amd64~~7.1.7601.16398, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_98162621 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2843630~31bf3856ad364e35~amd64~~6.1.3.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_99082674 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2862330~31bf3856ad364e35~amd64~~6.1.2.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_99222682 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2834140~31bf3856ad364e35~amd64~~6.1.2.0, ApplicableState: 112, CurrentState:0
+CBS    Session: 30546174_99252683 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546174_99402692 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2726535~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_100742769 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2667402~31bf3856ad364e35~amd64~~6.1.2.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_101322802 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2791765~31bf3856ad364e35~amd64~~6.1.1.2, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_101632820 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Hyper-V-Integration-Services-Package~31bf3856ad364e35~amd64~~6.3.9600.18080, ApplicableState: 112, CurrentState:0
+CBS    Session: 30546174_101752826 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3139940~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 80, CurrentState:112
+CBS    Session: 30546174_101792829 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2719033~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 80, CurrentState:0
+CBS    Session: 30546174_101842832 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3020393~31bf3856ad364e35~amd64~~6.1.1.2, ApplicableState: 64, CurrentState:0
+CBS    Session: 30546174_108353204 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Windows-Embedded-EmbeddedLockdown-Package-TopLevel~31bf3856ad364e35~amd64~~7.1.7601.16511, ApplicableState: 112, CurrentState:0
+CBS    Session: 30546174_149295546 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2544893~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 80, CurrentState:112
+CBS    Session: 30546174_149325547 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2685939~31bf3856ad364e35~amd64~~6.1.1.2, ApplicableState: 80, CurrentState:112
+CBS    Session: 30546174_149405552 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2729452~31bf3856ad364e35~amd64~~6.1.1.0, App
+CBS    Read out cached package applicability for package: Package_for_KB3184143~31bf3856ad364e35~amd64~~6.1.1.4, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546174_173636938 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546174_180377324 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3031432~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 80, CurrentState:112
+CBS    Read out cached package applicability for package: Package_for_KB3177467~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Failed to create backup log cab. [HRESULT = 0x80070001 - ERROR_INVALID_FUNCTION]
+CBS    Reboot mark refs incremented to: 1
+CBS    Scavenge: Starts
+CSI    00000009@2016/9/27:20:40:53.744 CSI Transaction @0x47e9e0 initialized for deployment engine {d16d444c-56d8-11d5-882d-0080c847b195} with flags 00000002 and client id [10]"TI6.0_0:0/"
+CBS    Scavenge: Begin CSI Store
+CSI    0000000a Performing 1 operations; 1 are not lock/unlock and follow:
+CSI    0000000b Store coherency cookie matches last scavenge cookie, skipping scavenge.
+CSI    0000000c ICSITransaction::Commit calling IStorePendingTransaction::Apply - coldpatching=FALSE applyflags=7
+CSI    0000000d Creating NT transaction (seq 2), objectname [6]"(null)"
+CSI    0000000e Created NT transaction (seq 2) result 0x00000000, handle @0xb8
+CSI    0000000f@2016/9/27:20:40:54.786 CSI perf trace:
+CBS    Scavenge: Completed, disposition: 0X1
+CSI    00000010@2016/9/27:20:40:54.787 CSI Transaction @0x47e9e0 destroyed
+CBS    Reboot mark refs: 0
+CBS    Idle processing thread terminated normally
+CBS    Ending the TrustedInstaller main loop.
+CBS    Starting TrustedInstaller finalization.
+CBS    Ending TrustedInstaller finalization.
+CBS    Starting TrustedInstaller initialization.
+CBS    Loaded Servicing Stack v6.1.7601.23505 with Core: C:\Windows\winsxs\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_6.1.7601.23505_none_681aa442f6fed7f0\cbscore.dll
+CSI    00000001@2016/9/28:16:00:46.160 WcpInitialize (wcp.dll version 0.0.0.6) called (stack @0x7fed875eb5d @0x7fee5c39b6d @0x7fee5c0358f @0xffeee97c @0xffeed799 @0xffeedb2f)
+CSI    00000002@2016/9/28:16:00:46.200 WcpInitialize (wcp.dll version 0.0.0.6) called (stack @0x7fed875eb5d @0x7fee5c86ade @0x7fee5c52984 @0x7fee5c03665 @0xffeee97c @0xffeed799)
+CSI    00000003@2016/9/28:16:00:46.213 WcpInitialize (wcp.dll version 0.0.0.6) called (stack @0x7fed875eb5d @0x7fef9d98728 @0x7fef9d98856 @0xffeee474 @0xffeed7de @0xffeedb2f)
+CBS    Ending TrustedInstaller initialization.
+CBS    Starting the TrustedInstaller main loop.
+CBS    TrustedInstaller service starts successfully.
+CBS    SQM: Initializing online with Windows opt-in: False
+CBS    SQM: Cleaning up report files older than 10 days.
+CBS    SQM: Requesting upload of all unsent reports.
+CBS    SQM: Failed to start upload with file pattern: C:\Windows\servicing\sqm\*_std.sqm, flags: 0x2 [HRESULT = 0x80004005 - E_FAIL]
+CBS    SQM: Failed to start standard sample upload. [HRESULT = 0x80004005 - E_FAIL]
+CBS    SQM: Queued 0 file(s) for upload with pattern: C:\Windows\servicing\sqm\*_all.sqm, flags: 0x6
+CBS    SQM: Warning: Failed to upload all unsent reports. [HRESULT = 0x80004005 - E_FAIL]
+CBS    No startup processing required, TrustedInstaller service was not set as autostart, or else a reboot is still pending.
+CBS    NonStart: Checking to ensure startup processing was not required.
+CSI    00000004 IAdvancedInstallerAwareStore_ResolvePendingTransactions (call 1) (flags = 00000004, progress = NULL, phase = 0, pdwDisposition = @0x116fa70
+CSI    00000005 Creating NT transaction (seq 1), objectname [6]"(null)"
+CSI    00000006 Created NT transaction (seq 1) result 0x00000000, handle @0x218
+CSI    00000007@2016/9/28:16:00:46.260 CSI perf trace:
+CBS    NonStart: Success, startup processing not required as expected.
+CBS    Startup processing thread terminated normally
+CBS    Loading offline registry hive: SOFTWARE, into registry key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/System32/config/SOFTWARE' from path '\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\System32\config\SOFTWARE'.
+CBS    Loading offline registry hive: SYSTEM, into registry key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/System32/config/SYSTEM' from path '\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\System32\config\SYSTEM'.
+CBS    Loading offline registry hive: SECURITY, into registry key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/System32/config/SECURITY' from path '\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\System32\config\SECURITY'.
+CBS    Loading offline registry hive: SAM, into registry key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/System32/config/SAM' from path '\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\System32\config\SAM'.
+CBS    Loading offline registry hive: COMPONENTS, into registry key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/System32/config/COMPONENTS' from path '\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\System32\config\COMPONENTS'.
+CBS    Loading offline registry hive: DEFAULT, into registry key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/System32/config/DEFAULT' from path '\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\System32\config\DEFAULT'.
+CBS    Loading offline registry hive: ntuser.dat, into registry key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Users/default/ntuser.dat' from path '\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Users\default\ntuser.dat'.
+CBS    Loading offline registry hive: schema.dat, into registry key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/system32/smi/store/Machine/schema.dat' from path '\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\system32\smi\store\Machine\schema.dat'.
+CBS    Offline image is: read-only
+CBS    Disabling manifest caching, because the image is not writeable.
+CSI    00000008@2016/9/28:16:00:46.635 PopulateComponentFamiliesKey - Begin
+CSI    00000009@2016/9/28:16:01:03.072 PopulateComponentFamiliesKey - End
+CSI    0000000a CSI Store 17159600 (0x000000000105d5b0) initialized
+CBS    Session: 11152_142416105 initialized by client SPP.
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Expecting attribute name [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Failed to get next element [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Unloading offline registry hive: {bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/System32/config/SOFTWARE
+CBS    Unloading offline registry hive: {bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/System32/config/SYSTEM
+CBS    Unloading offline registry hive: {bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/System32/config/SECURITY
+CBS    Unloading offline registry hive: {bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/System32/config/SAM
+CBS    Unloading offline registry hive: {bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/System32/config/COMPONENTS
+CBS    Unloading offline registry hive: {bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/System32/config/DEFAULT
+CBS    Unloading offline registry hive: {bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Users/default/ntuser.dat
+CBS    Unloading offline registry hive: {bf1a281b-ad7b-4476-ac95-f47682990ce7}GLOBALROOT/Device/HarddiskVolumeShadowCopy2/Windows/system32/smi/store/Machine/schema.dat
+CBS    Failed to create backup log cab. [HRESULT = 0x80070001 - ERROR_INVALID_FUNCTION]
+CSI    0000000b CSI Store 3065408 (0x00000000002ec640) initialized
+CBS    Session: 30546354_2823393669 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546354_2824723745 initialized by client WindowsUpdateAgent.
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Expecting attribute name [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Failed to get next element [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Expecting attribute name [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Failed to get next element [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Session: 30546354_2830724089 initialized by client WindowsUpdateAgent.
+CBS    Failed to internally open package. [HRESULT = 0x800f0805 - CBS_E_INVALID_PACKAGE]
+CBS    Session: 30546354_2833204231 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546354_2839784607 initialized by client WindowsUpdateAgent.
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Expecting attribute name [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Failed to get next element [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Expecting attribute name [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Failed to get next element [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Expecting attribute name [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Failed to get next element [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Expecting attribute name [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Failed to get next element [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALID_ITEM]
+CBS    Warning: Unrecognized packageExtended attribute.
+CBS    Session: 30546354_2850645228 initialized by client WindowsUpdateAgent.
+CBS    Failed to internally open package. [HRESULT = 0x800f0805 - CBS_E_INVALID_PACKAGE]
+CBS    Session: 30546354_2850655229 initialized by client WindowsUpdateAgent.
+CBS    Failed to internally open package. [HRESULT = 0x800f0805 - CBS_E_INVALID_PACKAGE]
+CBS    Session: 30546354_2850665229 initialized by client WindowsUpdateAgent.
+CBS    Failed to internally open package. [HRESULT = 0x800f0805 - CBS_E_INVALID_PACKAGE]
+CBS    Session: 30546354_2850685230 initialized by client WindowsUpdateAgent.
+CBS    Failed to internally open package. [HRESULT = 0x800f0805 - CBS_E_INVALID_PACKAGE]
+CBS    Session: 30546354_2850695231 initialized by client WindowsUpdateAgent.
+CBS    Failed to internally open package. [HRESULT = 0x800f0805 - CBS_E_INVALID_PACKAGE]
+CBS    Session: 30546354_2850705232 initialized by client WindowsUpdateAgent.
+CBS    Failed to internally open package. [HRESULT = 0x800f0805 - CBS_E_INVALID_PACKAGE]
+CBS    Session: 30546354_2850715232 initialized by client WindowsUpdateAgent.
+CBS    Failed to internally open package. [HRESULT = 0x800f0805 - CBS_E_INVALID_PACKAGE]
+CBS    Session: 30546354_2852095311 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546354_2956421278 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3011780~31bf3856ad364e35~amd64~~6.1.1.5, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_2958491397 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Hyper-V-Integration-Services-Package~31bf3856ad364e35~amd64~~6.3.9600.17681, ApplicableState: 112, CurrentState:0
+CBS    Session: 30546354_2989623177 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546354_3044886338 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Windows-RDP-BlueIP-Package-TopLevel~31bf3856ad364e35~amd64~~7.2.7601.16415, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3070417798 initialized by client WindowsUpdateAgent.
+CBS    Failed to internally open package. [HRESULT = 0x800f0805 - CBS_E_INVALID_PACKAGE]
+CBS    Session: 30546354_3070457801 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3124280~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3190064642 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Hyper-V-Integration-Services-Package~31bf3856ad364e35~amd64~~6.3.9600.17388, ApplicableState: 112, CurrentState:0
+CBS    Session: 30546354_3190364659 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546354_3200035212 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2871997~31bf3856ad364e35~amd64~~6.1.2.5, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3202615360 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3164035~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3203065385 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546354_3203755425 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2574819~31bf3856ad364e35~amd64~~6.1.2.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3204535469 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Windows-RDP-WinIP-Package-TopLevel~31bf3856ad364e35~amd64~~7.1.7601.16398, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3204965494 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Hyper-V-Integration-Services-Package~31bf3856ad364e35~amd64~~6.3.9600.18080, ApplicableState: 112, CurrentState:0
+CBS    Session: 30546354_3274739485 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3179573~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3274949497 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Hyper-V-Integration-Services-Package~31bf3856ad364e35~amd64~~6.3.9600.17903, ApplicableState: 112, CurrentState:0
+CBS    Session: 30546354_3275569532 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2952664~31bf3856ad364e35~amd64~~6.1.19.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3275839548 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3149090~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3276819604 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3178034~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3276969612 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3097989~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3277269630 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2853587~31bf3856ad364e35~amd64~~6.1.1.2, ApplicableState: 0, CurrentState:0
+CBS    Session: 30546354_3282399923 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2732059~31bf3856ad364e35~amd64~~6.1.5.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3283119964 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3164033~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3284880065 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3080149~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3290590392 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3046017~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3290750401 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3067904~31bf3856ad364e35~amd64~~6.1.1.2, ApplicableState: 80, CurrentState:0
+CBS    Session: 30546354_3290900409 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2912390~31bf3856ad364e35~amd64~~6.1.1.2, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3291640452 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2632503~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 80, CurrentState:0
+CBS    Session: 30546354_3292390494 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2991963~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3292510501 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2911501~31bf3856ad364e35~amd64~~6.1.1.2, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3293810576 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2984972~31bf3856ad364e35~amd64~~6.1.1.4, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3297200770 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3121461~31bf3856ad364e35~amd64~~6.1.1.2, ApplicableState: 80, CurrentState:112
+CBS    Session: 30546354_3297210770 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3161958~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3298080820 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2888049~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 80, CurrentState:112
+CBS    Session: 30546354_3298800861 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2773072~31bf3856ad364e35~amd64~~6.1.1.5, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3300650967 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2579686~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3300820977 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3075222~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 80, CurrentState:0
+CBS    Session: 30546354_3300870980 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Microsoft-Windows-Embedded-EmbeddedLockdown-Package-TopLevel~31bf3856ad364e35~amd64~~7.1.7601.16511, ApplicableState: 112, CurrentState:0
+CBS    Session: 30546354_3300980986 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2621440~31bf3856ad364e35~amd64~~6.1.1.5, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3315431812 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3184143~31bf3856ad364e35~amd64~~6.1.1.4, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3319352037 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2992611~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3321642168 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2727528~31bf3856ad364e35~amd64~~6.1.1.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3334232888 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2813430~31bf3856ad364e35~amd64~~6.1.1.4, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3336152998 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3033889~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3336463015 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2993651~31bf3856ad364e35~amd64~~6.1.1.3, ApplicableState: 80, CurrentState:112
+CBS    Session: 30546354_3337823093 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3184122~31bf3856ad364e35~amd64~~6.1.1.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3344683485 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB982018~31bf3856ad364e35~amd64~~6.1.3.2, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3345573536 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2705219~31bf3856ad364e35~amd64~~6.1.2.0, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3345633540 initialized by client WindowsUpdateAgent.
+CBS    Session: 30546354_3347003618 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3004375~31bf3856ad364e35~amd64~~6.1.3.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3350523820 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB3004375~31bf3856ad364e35~amd64~~6.1.3.1, ApplicableState: 112, CurrentState:112
+CBS    Session: 30546354_3363894584 initialized by client WindowsUpdateAgent.
+CBS    Read out cached package applicability for package: Package_for_KB2928120~31bf3856ad364e35~amd64~~6.1.1.2, ApplicableState: 0, CurrentState:0

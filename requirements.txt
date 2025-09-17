@@ -1,0 +1,8 @@
+fluent==0.10.0
+inotify_simple==2.0.1
+langchain==0.3.27
+langchain_google_genai==2.1.11
+python-dotenv==1.1.1
+PyYAML==6.0.2
+PyYAML==6.0.2
+qdrant_client==1.15.1
