@@ -1,7 +1,5 @@
 .env
-<<<<<<< HEAD
 daemon/logs/data.log/*
-=======
 
 # Logs
 *.log
@@ -14,4 +12,3 @@ __pycache__/
 
 # Images (if not needed in repo)
 *.webp
->>>>>>> a2c41a3 (added operate.sh)
