@@ -1,2 +1,17 @@
 .env
+<<<<<<< HEAD
 daemon/logs/data.log/*
+=======
+
+# Logs
+*.log
+*.log.*
+daemon/logs/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Images (if not needed in repo)
+*.webp
+>>>>>>> a2c41a3 (added operate.sh)
