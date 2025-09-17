@@ -7,6 +7,7 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 load_dotenv(find_dotenv())
 
 def qdrant_client():
+    """Initialize and return a Qdrant client"""
     return QdrantClient(
         os.getenv("QDRANT_HOST"),
         api_key=os.getenv("QDRANT_API_KEY"),
@@ -14,6 +15,10 @@ def qdrant_client():
     )
 
 def create_collection(client, collecion_name=None):
+    """
+    Create a Qdrant collection if it does not exist already.
+    Collection dimensions are set based on embedding size.
+    """
     if not collecion_name:
         collection_name = os.getenv("QDRANT_COLLECTION_NAME")
 

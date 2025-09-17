@@ -2,6 +2,6 @@ docker run -d \
   -p 24224:24224 \
   -v $(pwd)/logs:/fluentd/log \
   -v $(pwd)/fluent.conf:/fluentd/etc/fluent.conf \
-  --user root \
+  --user root --user $(id -u):$(id -g) \
   --name fluentd \
   fluent/fluentd:v1.16-1

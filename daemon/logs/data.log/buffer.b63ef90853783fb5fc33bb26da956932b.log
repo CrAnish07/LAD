@@ -1,0 +1,11 @@
+2025-09-17T06:06:07+00:00	fluent.info	{"pid":16,"ppid":7,"worker":0,"message":"starting fluentd worker pid=16 ppid=7 worker=0"}
+2025-09-17T06:06:07+00:00	fluent.info	{"port":24224,"bind":"0.0.0.0","message":"listening port port=24224 bind=\"0.0.0.0\""}
+2025-09-17T06:06:07+00:00	fluent.info	{"worker":0,"message":"fluentd worker is now running worker=0"}
+2025-09-17T06:07:20+00:00	fluent.info	{"worker":0,"message":"fluentd worker is now stopping worker=0"}
+2025-09-17T06:07:23+00:00	fluent.info	{"pid":16,"ppid":7,"worker":0,"message":"starting fluentd worker pid=16 ppid=7 worker=0"}
+2025-09-17T06:07:23+00:00	fluent.info	{"port":24224,"bind":"0.0.0.0","message":"listening port port=24224 bind=\"0.0.0.0\""}
+2025-09-17T06:07:23+00:00	fluent.info	{"worker":0,"message":"fluentd worker is now running worker=0"}
+2025-09-17T06:09:46+00:00	fluent.info	{"worker":0,"message":"fluentd worker is now stopping worker=0"}
+2025-09-17T06:09:50+00:00	fluent.info	{"pid":16,"ppid":7,"worker":0,"message":"starting fluentd worker pid=16 ppid=7 worker=0"}
+2025-09-17T06:09:50+00:00	fluent.info	{"port":24224,"bind":"0.0.0.0","message":"listening port port=24224 bind=\"0.0.0.0\""}
+2025-09-17T06:09:50+00:00	fluent.info	{"worker":0,"message":"fluentd worker is now running worker=0"}

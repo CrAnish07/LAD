@@ -8,6 +8,10 @@ load_dotenv(find_dotenv())
 
 
 def get_vectorstore(client: QdrantClient, collection_name):
+    """
+    Initialize Qdrant vector store for similarity search.
+    Uses Google Gemini embeddings for encoding queries & documents.
+    """
     embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
     return Qdrant(
         client=client,

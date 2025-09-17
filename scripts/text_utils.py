@@ -1,6 +1,10 @@
 import textwrap
 
 def chunk_text(text, chunk_size=500, overlap=50):
+    """
+    Break text into overlapping chunks for embedding.
+    Useful when documents/logs are too long to embed as a whole.
+    """
     chunks = []
     start = 0
     while start < len(text):
@@ -10,6 +14,9 @@ def chunk_text(text, chunk_size=500, overlap=50):
     return chunks
 
 def build_context(results, k=3):
+    """
+    Format retrieved results into a readable context string that will be passed into the LLM.
+    """
     ctx_parts = []
     for i, (doc, score) in enumerate(results, start=1):
         snippet = doc.page_content.strip().replace("\n", " ")
