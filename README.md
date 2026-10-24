@@ -46,7 +46,6 @@ LAD/
 ├── consumer/                 # Consumer application
 ├── frontend/
 │   └── dashboard.html        # Local live dashboard
-├── index.html                # GitHub Pages project website
 ├── tests/                    # Unit and integration tests
 ├── operate.sh                # Starts Fluentd and Python processes
 ├── requirements.txt
@@ -127,10 +126,11 @@ Results appear as the pipeline processes new incoming log lines. Set
 `DASHBOARD_HOST` and `DASHBOARD_PORT` to change the
 local bind address and port.
 
-The project overview website is `index.html` at the repository root and can be
-published with GitHub Pages using the repository root as the source. The live
-dashboard remains a local app because it depends on the running LAD processes
-and `/api/overview` endpoint.
+The project overview website is maintained in the separate
+[lad-site repository](https://github.com/CrAnish07/lad-site) and can be
+published with GitHub Pages from its `main` branch. The live dashboard remains
+a local app because it depends on the running LAD processes and `/api/overview`
+endpoint.
 
 ### Generate demo activity
 
