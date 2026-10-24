@@ -126,6 +126,17 @@ Results appear as the pipeline processes new incoming log lines. Set
 `DASHBOARD_HOST` and `DASHBOARD_PORT` to change the
 local bind address and port.
 
+Before embedding or model analysis, LAD groups matching messages from the same
+source for `LOG_GROUP_WINDOW_SECONDS` (default five seconds) and applies local
+rules. Routine health/probe/debug logs are marked filtered, common error
+patterns are classified by rules, and critical or uncertain groups are sent to
+the configured model workers. Every raw log still appears in the dashboard;
+group occurrence counts and the analysis source are shown per event. If all
+model workers fail, the event is marked `Needs review` with a rules-based
+fallback. Gemini is still used for embeddings only for groups routed to model
+analysis; if embedding/retrieval is unavailable, chat analysis continues
+without retrieved context.
+
 The project overview website is maintained in the separate
 [lad-site repository](https://github.com/CrAnish07/lad-site) and can be
 published with GitHub Pages from its `main` branch. The live dashboard remains
