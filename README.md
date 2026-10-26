@@ -182,6 +182,11 @@ variant. Set `OPENROUTER_API_KEY` in `.env`; optionally set
 models, so this worker may occasionally be unavailable and LAD can retry the
 log with another configured worker.
 
+The root `wrangler.jsonc` configures Cloudflare Workers Builds to deploy the
+static dashboard assets from `frontend/`. This hosts the dashboard page only;
+the live `/api/overview` endpoint is served by the Python dashboard process
+and remains local unless the backend is separately hosted and exposed.
+
 The project overview website is maintained in the separate
 [lad-site repository](https://github.com/CrAnish07/lad-site) and can be
 published with GitHub Pages from its `main` branch. The live dashboard remains

@@ -1,0 +1,7 @@
+{
+  "name": "lad",
+  "compatibility_date": "2026-10-27",
+  "assets": {
+    "directory": "./frontend"
+  }
+}
