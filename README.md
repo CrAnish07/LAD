@@ -15,7 +15,7 @@ LAD helps you continuously monitor log files and detect anomalies (errors, warni
 - Buffering them in live log files.  
 - Embedding log lines using semantic embeddings (Google Gemini).  
 - Storing embeddings in Qdrant vector database.  
-- Running similarity search + model workers to classify whether a log line is anomalous and suggest context/fix.
+- Searching an explicitly ingested historical reference corpus, then running model workers to classify live log lines and suggest context/fixes. Live events are not added to that corpus during analysis.
 
 --- 
 
@@ -93,6 +93,17 @@ LAD/
    unless `QDRANT_HOST` is set in the shell or `.env`.
 
 5. **Start services**
+
+   To provide historical context, ingest a reference log dataset into the
+   configured `QDRANT_COLLECTION_NAME` first:
+
+   ```bash
+   python scripts/log_ingestion.py
+   ```
+
+   Live analysis retrieves only records tagged as historical. Existing records
+   in Qdrant without that source tag are ignored; re-ingest trusted reference
+   data to make it available to retrieval.
 
    ```bash
    ./operate.sh [seconds_to_run]

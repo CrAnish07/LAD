@@ -7,7 +7,7 @@ from text_utils import chunk_text
 DEFAULT_LOG_FILE = Path(__file__).resolve().parent.parent / "data" / "sample_logs" / "Apache_2k.log"
 
 
-def ingest_logs(file_path=DEFAULT_LOG_FILE, collection_name="apache_logs_collection"):
+def ingest_logs(file_path=DEFAULT_LOG_FILE, collection_name=None):
     client = qdrant_client()
     collection_name = create_collection(client, collection_name)
     vector_store = get_vectorstore(client, collection_name)
@@ -18,7 +18,10 @@ def ingest_logs(file_path=DEFAULT_LOG_FILE, collection_name="apache_logs_collect
     chunks = chunk_text(raw_logs, chunk_size=500, overlap=50)
 
     texts = [chunk.strip() for chunk in chunks if chunk.strip()]
-    vector_store.add_texts(texts)
+    vector_store.add_texts(
+        texts,
+        metadatas=[{"source": "historical", "file": str(file_path)} for _ in texts],
+    )
     print(f"Ingested {len(texts)} log chunks into collection '{collection_name}'")
 
 if __name__ == "__main__":

@@ -207,14 +207,15 @@ def main():
             f"Severity: {decision['severity']}.\nRepresentative messages:\n{sample_text}"
         )
         context = ""
+        # Retrieve only explicitly ingested reference data. Live events must not
+        # enter the corpus before analysis, or they can retrieve themselves (or
+        # other recent live events) as misleading context.
         # Embedding and retrieval are best-effort. A Gemini embedding quota
         # must not prevent the configured chat model workers from analyzing logs.
         try:
-            vector_store.add_texts(
-                [query],
-                metadatas=[{"file": group["file"], "source": "live_log_group", "group_id": group["group_id"]}],
-            )
-            context = build_context(vector_store.similarity_search_with_score(query, k=3))
+            context = build_context(vector_store.similarity_search_with_score(
+                query, k=3, filter={"source": "historical"}
+            ))
         except Exception as exc:
             print(f"Context retrieval unavailable for {group['group_id']}: {exc}", flush=True)
         update_group(events, {
