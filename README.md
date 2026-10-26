@@ -185,7 +185,9 @@ log with another configured worker.
 The root `wrangler.jsonc` configures Cloudflare Workers Builds to deploy the
 static dashboard assets from `frontend/`. This hosts the dashboard page only;
 the live `/api/overview` endpoint is served by the Python dashboard process
-and remains local unless the backend is separately hosted and exposed.
+and remains local unless the backend is separately hosted and exposed. The
+Wrangler config enables persisted Worker invocation logs; Cloudflare Logpush
+cannot be attached while this Worker contains only static assets.
 
 The project overview website is maintained in the separate
 [lad-site repository](https://github.com/CrAnish07/lad-site) and can be

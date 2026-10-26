@@ -3,5 +3,12 @@
   "compatibility_date": "2026-10-27",
   "assets": {
     "directory": "./frontend"
+  },
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true,
+      "persist": true
+    }
   }
 }
