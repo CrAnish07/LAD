@@ -122,7 +122,7 @@ def main():
                 raw = classify(task["inputs"])
                 classification = parse_classification(raw)
                 update_group(task["events"], {
-                    "status": "analyzed",
+                    "status": "needs_review" if classification.get("needs_review") else "analyzed",
                     "model": model,
                     "analysis_source": "llm",
                     "models_tried": sorted(task["tried"]),
@@ -232,7 +232,11 @@ def main():
             "group_id": group["group_id"],
             "group_count": group["count"],
             "events": events,
-            "inputs": {"query": query, "context": context},
+            "inputs": {
+                "query": query,
+                "context": context,
+                "state": "\n".join(group["samples"][:3]),
+            },
             "triage": decision,
             "tried": set(),
         }, new_task=True)
