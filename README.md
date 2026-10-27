@@ -98,7 +98,7 @@ LAD/
    Each configured provider/model pair gets a concurrent worker, and failed
    logs are retried by other configured workers at most once each. Requesty
    uses its OpenAI-compatible API at `https://router.requesty.ai/v1`; its free
-   free plan currently allows 200 requests per day, so it is best used as an
+   plan currently allows 200 requests per day, so it is best used as an
    additional worker for selected/anomalous log groups rather than every raw
    line in sustained high-volume traffic. NanoGPT
    model IDs and pricing vary; check its current catalog. Clairic is an
@@ -115,6 +115,10 @@ LAD/
    ```bash
    python scripts/log_ingestion.py
    ```
+
+   Ingestion rate-limits embedding batches and retries Gemini quota errors.
+   Stable chunk IDs make rerunning after an interruption safe without creating
+   duplicate copies of already-ingested chunks.
 
    Live analysis retrieves only records tagged as historical. Existing records
    in Qdrant without that source tag are ignored; re-ingest trusted reference
