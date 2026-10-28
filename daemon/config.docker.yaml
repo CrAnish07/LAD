@@ -1,0 +1,9 @@
+# Docker Compose defaults to the included Apache sample log. Change this path
+# to a mounted log file when connecting LAD to your own host logs.
+logs_by_os:
+  Linux:
+    - /var/log/lad/Apache_2k.log
+
+fluentd:
+  host: fluentd
+  port: 24224

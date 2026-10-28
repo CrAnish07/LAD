@@ -5,6 +5,7 @@ import os
 import signal
 import threading
 import time
+import uuid
 from collections import deque
 from datetime import datetime, timezone
 
@@ -207,17 +208,33 @@ def main():
             f"Severity: {decision['severity']}.\nRepresentative messages:\n{sample_text}"
         )
         context = ""
-        # Retrieve only explicitly ingested reference data. Live events must not
-        # enter the corpus before analysis, or they can retrieve themselves (or
-        # other recent live events) as misleading context.
-        # Embedding and retrieval are best-effort. A Gemini embedding quota
-        # must not prevent the configured chat model workers from analyzing logs.
+        # Retrieve before writing this event so it cannot retrieve itself.
+        # Low-similarity events are added as reference examples for future logs.
         try:
-            context = build_context(vector_store.similarity_search_with_score(
+            matches = vector_store.similarity_search_with_score(
                 query, k=3, filter={"source": "historical"}
-            ))
+            )
+            context = build_context(matches)
+            best_similarity = max((score for _, score in matches), default=0.0)
+            if best_similarity < 0.5:
+                vector_store.add_texts(
+                    texts=[query],
+                    metadatas=[{
+                        "source": "historical",
+                        "origin": "learned_live",
+                        "file": group["file"],
+                        "similarity_score": float(best_similarity),
+                        "severity": decision["severity"],
+                    }],
+                    ids=[str(uuid.uuid5(uuid.NAMESPACE_URL, f"lad-live:{group['group_id']}"))],
+                )
+                print(
+                    f"Stored low-similarity log group {group['group_id']} "
+                    f"(best similarity {best_similarity:.3f}) for future context.",
+                    flush=True,
+                )
         except Exception as exc:
-            print(f"Context retrieval unavailable for {group['group_id']}: {exc}", flush=True)
+            print(f"Context retrieval or learning unavailable for {group['group_id']}: {exc}", flush=True)
         update_group(events, {
             **common,
             "status": "queued",

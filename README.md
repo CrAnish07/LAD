@@ -57,6 +57,39 @@ LAD/
 
 ---
 
+## Run with Docker
+
+Docker Compose builds the LAD image (including Python and its requirements) and
+starts LAD, Fluentd, and Qdrant together. Install Docker Desktop or Docker
+Engine with the Compose plugin, then from the repository directory:
+
+```bash
+cp .env.example .env   # if the example file is present; otherwise create .env
+# Set provider API keys and ANALYSIS_WORKERS in .env as needed.
+docker compose up --build
+```
+
+Open [http://localhost:8080](http://localhost:8080) for the dashboard. Compose
+starts with the included Apache sample log mounted read-only at
+`/var/log/lad/Apache_2k.log`. To watch another file or directory, mount it in
+the `lad` service in `compose.yaml` and update the Linux path in
+`daemon/config.docker.yaml`. The Docker config uses the Compose service name
+`fluentd`; Qdrant is configured automatically on the internal Compose network.
+Set `DASHBOARD_PORT` in `.env` to change the host port. Logs and Qdrant data
+persist in named Docker volumes across restarts.
+
+Stop with Ctrl+C, or run `docker compose down`. Use `docker compose down -v`
+only when you also want to remove the persisted log and Qdrant data volumes.
+
+To ingest a historical reference corpus while the Compose services are
+running, execute:
+
+```bash
+docker compose exec lad python scripts/log_ingestion.py
+```
+
+---
+
 ## Setup & Installation
 
 1. **Clone the repo**
