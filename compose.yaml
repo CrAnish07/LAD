@@ -32,6 +32,9 @@ services:
 
   fluentd:
     image: fluent/fluentd:v1.16-1
+    # The shared named volume is initialized by the LAD image as root. Run
+    # Fluentd as root in this isolated container so it can append log files.
+    user: "0:0"
     restart: unless-stopped
     ports:
       - "24224:24224"

@@ -59,15 +59,26 @@ LAD/
 
 ## Run with Docker
 
-Docker Compose builds the LAD image (including Python and its requirements) and
-starts LAD, Fluentd, and Qdrant together. Install Docker Desktop or Docker
-Engine with the Compose plugin, then from the repository directory:
+The LAD image is published on Docker Hub as
+[`cranish07/lad:1.0.0`](https://hub.docker.com/r/cranish07/lad). Pull it with:
+
+```bash
+docker pull cranish07/lad:1.0.0
+```
+
+To run the complete stack, Docker Compose starts LAD, Fluentd, and Qdrant
+together. Install Docker Desktop or Docker Engine with the Compose plugin, then
+from the repository directory:
 
 ```bash
 cp .env.example .env   # if the example file is present; otherwise create .env
 # Set provider API keys and ANALYSIS_WORKERS in .env as needed.
 docker compose up --build
 ```
+
+This Compose command builds LAD from the checked-out source. The published
+image can also be used directly with `docker run`, but running the full stack
+requires the Fluentd and Qdrant services configured in `compose.yaml`.
 
 Open [http://localhost:8080](http://localhost:8080) for the dashboard. Compose
 starts with the included Apache sample log mounted read-only at
