@@ -22,12 +22,13 @@ services:
       - ./logs:/var/log/lad
     # Keep the generic input path compatible with older published images.
     entrypoint: ["/bin/sh", "-c"]
-    command: |
-      set -eu
-      mkdir -p /var/log/lad
-      sed -i 's|/var/log/lad/Apache_2k.log|/var/log/lad/lad.log|g' /app/daemon/config.docker.yaml
-      touch /var/log/lad/lad.log
-      exec /app/docker-entrypoint.sh
+    command:
+      - |
+        set -eu
+        mkdir -p /var/log/lad
+        sed -i 's|/var/log/lad/Apache_2k.log|/var/log/lad/lad.log|g' /app/daemon/config.docker.yaml
+        touch /var/log/lad/lad.log
+        exec /app/docker-entrypoint.sh
 
   fluentd:
     image: fluent/fluentd:v1.16-1
@@ -39,28 +40,29 @@ services:
     volumes:
       - lad_logs:/fluentd/log
     entrypoint: ["/bin/sh", "-c"]
-    command: |
-      cat > /fluentd/etc/fluent.conf <<'EOF'
-      <source>
-        @type forward
-        port 24224
-        bind 0.0.0.0
-      </source>
+    command:
+      - |
+        cat > /fluentd/etc/fluent.conf <<'EOF'
+        <source>
+          @type forward
+          port 24224
+          bind 0.0.0.0
+        </source>
 
-      <match **>
-        @type file
-        path /fluentd/log/data.log
-        append true
-        <format>
-          @type json
-        </format>
-        <buffer>
-          flush_mode interval
-          flush_interval 1s
-        </buffer>
-      </match>
-      EOF
-      exec fluentd -c /fluentd/etc/fluent.conf
+        <match **>
+          @type file
+          path /fluentd/log/data.log
+          append true
+          <format>
+            @type json
+          </format>
+          <buffer>
+            flush_mode interval
+            flush_interval 1s
+          </buffer>
+        </match>
+        EOF
+        exec fluentd -c /fluentd/etc/fluent.conf
 
   qdrant:
     image: qdrant/qdrant:latest
