@@ -60,10 +60,10 @@ LAD/
 ## Run with Docker
 
 The LAD image is published on Docker Hub as
-[`cranish07/lad:1.0.0`](https://hub.docker.com/r/cranish07/lad). Pull it with:
+[`cranish07/lad:1.0.1`](https://hub.docker.com/r/cranish07/lad). Pull it with:
 
 ```bash
-docker pull cranish07/lad:1.0.0
+docker pull cranish07/lad:1.0.1
 ```
 
 ### Run without cloning the repository

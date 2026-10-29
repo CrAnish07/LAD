@@ -1,6 +1,6 @@
 services:
   lad:
-    image: cranish07/lad:1.0.0
+    image: cranish07/lad:1.0.1
     pull_policy: always
     restart: unless-stopped
     depends_on:
@@ -20,8 +20,7 @@ services:
     volumes:
       - lad_logs:/app/daemon/logs
       - ./logs:/var/log/lad
-    # The published 1.0.0 image still points at the old Apache sample path.
-    # Create the generic input file and update its bundled config at startup.
+    # Keep the generic input path compatible with older published images.
     entrypoint: ["/bin/sh", "-c"]
     command: |
       set -eu
