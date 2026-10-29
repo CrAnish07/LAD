@@ -1,0 +1,66 @@
+services:
+  lad:
+    image: cranish07/lad:1.0.0
+    pull_policy: always
+    restart: unless-stopped
+    depends_on:
+      - fluentd
+      - qdrant
+    ports:
+      - "${DASHBOARD_PORT:-8080}:8080"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DASHBOARD_HOST: 0.0.0.0
+      DASHBOARD_PORT: 8080
+      FLUENTD_HOST: fluentd
+      FLUENTD_PORT: 24224
+      QDRANT_HOST: http://qdrant:6333
+    volumes:
+      - lad_logs:/app/daemon/logs
+      - ./logs:/var/log/lad:ro
+      - ./logs:/app/data/sample_logs:ro
+
+  fluentd:
+    image: fluent/fluentd:v1.16-1
+    # The log volume is shared with LAD, so Fluentd needs write access.
+    user: "0:0"
+    restart: unless-stopped
+    ports:
+      - "24224:24224"
+    volumes:
+      - lad_logs:/fluentd/log
+    entrypoint: ["/bin/sh", "-c"]
+    command: |
+      cat > /fluentd/etc/fluent.conf <<'EOF'
+      <source>
+        @type forward
+        port 24224
+        bind 0.0.0.0
+      </source>
+
+      <match **>
+        @type file
+        path /fluentd/log/data.log
+        append true
+        <format>
+          @type json
+        </format>
+        <buffer>
+          flush_mode interval
+          flush_interval 1s
+        </buffer>
+      </match>
+      EOF
+      exec fluentd -c /fluentd/etc/fluent.conf
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    restart: unless-stopped
+    volumes:
+      - qdrant_storage:/qdrant/storage
+
+volumes:
+  lad_logs:
+  qdrant_storage:

@@ -1,5 +1,6 @@
 # ingest_apache.py
 from pathlib import Path
+import argparse
 import re
 import time
 import uuid
@@ -85,4 +86,15 @@ def ingest_logs(file_path=DEFAULT_LOG_FILE, collection_name=None):
     print(f"Ingested {len(texts)} log chunks into collection '{collection_name}'")
 
 if __name__ == "__main__":
-    ingest_logs()
+    parser = argparse.ArgumentParser(description="Ingest a historical log file into Qdrant.")
+    parser.add_argument(
+        "file_path",
+        nargs="?",
+        help="log file to ingest (defaults to the repository sample, or the Docker-mounted sample)",
+    )
+    args = parser.parse_args()
+    file_path = Path(args.file_path) if args.file_path else DEFAULT_LOG_FILE
+    docker_sample = Path("/var/log/lad/Apache_2k.log")
+    if not file_path.is_file() and not args.file_path and docker_sample.is_file():
+        file_path = docker_sample
+    ingest_logs(file_path)

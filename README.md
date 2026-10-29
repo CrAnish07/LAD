@@ -66,9 +66,57 @@ The LAD image is published on Docker Hub as
 docker pull cranish07/lad:1.0.0
 ```
 
-To run the complete stack, Docker Compose starts LAD, Fluentd, and Qdrant
-together. Install Docker Desktop or Docker Engine with the Compose plugin, then
-from the repository directory:
+### Run without cloning the repository
+
+Download the Compose file and environment template into a new folder, then
+configure your API keys:
+
+```bash
+mkdir lad-deploy && cd lad-deploy
+curl -fsSLO https://raw.githubusercontent.com/CrAnish07/LAD/main/compose.dockerhub.yaml
+curl -fsSLO https://raw.githubusercontent.com/CrAnish07/LAD/main/.env.example
+cp .env.example .env
+mkdir -p logs
+```
+
+Edit `.env` and add the API keys for the providers you want to use. To monitor
+a log file with the bundled config, place it at `logs/Apache_2k.log`. You can
+download the included sample log without cloning the repo:
+
+```bash
+curl -fsSL -o logs/Apache_2k.log https://raw.githubusercontent.com/CrAnish07/LAD/main/data/sample_logs/Apache_2k.log
+```
+
+Then start the stack:
+
+```bash
+docker compose -f compose.dockerhub.yaml up -d
+```
+
+Open [http://localhost:8080](http://localhost:8080) for the dashboard. To send
+demo events through the pipeline:
+
+```bash
+docker compose -f compose.dockerhub.yaml exec lad python scripts/demo_load.py --host fluentd
+```
+
+To ingest `logs/Apache_2k.log` as historical reference data:
+
+```bash
+docker compose -f compose.dockerhub.yaml exec lad python scripts/log_ingestion.py
+```
+
+Stop the stack with:
+
+```bash
+docker compose -f compose.dockerhub.yaml down
+```
+
+### Build and run from source
+
+To build LAD locally and start LAD, Fluentd, and Qdrant together, install
+Docker Desktop or Docker Engine with the Compose plugin and run from the cloned
+repository directory:
 
 ```bash
 cp .env.example .env   # if the example file is present; otherwise create .env
@@ -93,10 +141,17 @@ Stop with Ctrl+C, or run `docker compose down`. Use `docker compose down -v`
 only when you also want to remove the persisted log and Qdrant data volumes.
 
 To ingest a historical reference corpus while the Compose services are
-running, execute:
+running, execute the following command. It uses the mounted Apache sample by
+default; you can pass another file path as an argument:
 
 ```bash
 docker compose exec lad python scripts/log_ingestion.py
+```
+
+For example, to ingest a different file mounted into the container:
+
+```bash
+docker compose exec lad python scripts/log_ingestion.py /path/in/container/application.log
 ```
 
 ---
