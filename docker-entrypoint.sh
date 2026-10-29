@@ -1,6 +1,9 @@
 #!/bin/sh
 set -eu
 
+mkdir -p /var/log/lad
+touch /var/log/lad/lad.log
+
 python /app/daemon/daemon.py /app/daemon/config.docker.yaml &
 daemon_pid=$!
 python /app/scripts/main.py /app/daemon/config.docker.yaml &

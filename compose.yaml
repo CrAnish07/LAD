@@ -27,7 +27,7 @@ services:
       CLOUDFLARE_AUTH_TOKEN: ${CLOUDFLARE_AUTH_TOKEN:-}
     volumes:
       - lad_logs:/app/daemon/logs
-      - ./data/sample_logs:/var/log/lad:ro
+      - ./logs:/var/log/lad
       - ./daemon/config.docker.yaml:/app/daemon/config.docker.yaml:ro
 
   fluentd:

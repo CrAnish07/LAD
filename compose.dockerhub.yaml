@@ -19,8 +19,16 @@ services:
       QDRANT_HOST: http://qdrant:6333
     volumes:
       - lad_logs:/app/daemon/logs
-      - ./logs:/var/log/lad:ro
-      - ./logs:/app/data/sample_logs:ro
+      - ./logs:/var/log/lad
+    # The published 1.0.0 image still points at the old Apache sample path.
+    # Create the generic input file and update its bundled config at startup.
+    entrypoint: ["/bin/sh", "-c"]
+    command: |
+      set -eu
+      mkdir -p /var/log/lad
+      sed -i 's|/var/log/lad/Apache_2k.log|/var/log/lad/lad.log|g' /app/daemon/config.docker.yaml
+      touch /var/log/lad/lad.log
+      exec /app/docker-entrypoint.sh
 
   fluentd:
     image: fluent/fluentd:v1.16-1

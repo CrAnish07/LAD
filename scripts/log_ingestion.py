@@ -94,7 +94,10 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     file_path = Path(args.file_path) if args.file_path else DEFAULT_LOG_FILE
-    docker_sample = Path("/var/log/lad/Apache_2k.log")
-    if not file_path.is_file() and not args.file_path and docker_sample.is_file():
-        file_path = docker_sample
+    docker_inputs = (
+        Path("/var/log/lad/lad.log"),
+        Path("/var/log/lad/Apache_2k.log"),
+    )
+    if not file_path.is_file() and not args.file_path:
+        file_path = next((path for path in docker_inputs if path.is_file()), file_path)
     ingest_logs(file_path)

@@ -79,31 +79,26 @@ cp .env.example .env
 mkdir -p logs
 ```
 
-Edit `.env` and add the API keys for the providers you want to use. To monitor
-a log file with the bundled config, place it at `logs/Apache_2k.log`. You can
-download the included sample log without cloning the repo:
-
-```bash
-curl -fsSL -o logs/Apache_2k.log https://raw.githubusercontent.com/CrAnish07/LAD/main/data/sample_logs/Apache_2k.log
-```
-
-Then start the stack:
+Edit `.env` and add the API keys for the providers you want to use. The first
+startup creates an empty `logs/lad.log` automatically. To monitor a host log,
+replace the `./logs:/var/log/lad` volume in `compose.dockerhub.yaml` with a
+mount from your host log file to `/var/log/lad/lad.log`. Then start the stack:
 
 ```bash
 docker compose -f compose.dockerhub.yaml up -d
 ```
 
-Open [http://localhost:8080](http://localhost:8080) for the dashboard. To send
-demo events through the pipeline:
+Open [http://localhost:8080](http://localhost:8080) for the dashboard. To add
+a log line to the watched file from the container:
+
+```bash
+docker compose -f compose.dockerhub.yaml exec lad sh -c 'echo "$(date -Is) ERROR example event" >> /var/log/lad/lad.log'
+```
+
+To send generated demo events through the pipeline instead:
 
 ```bash
 docker compose -f compose.dockerhub.yaml exec lad python scripts/demo_load.py --host fluentd
-```
-
-To ingest `logs/Apache_2k.log` as historical reference data:
-
-```bash
-docker compose -f compose.dockerhub.yaml exec lad python scripts/log_ingestion.py
 ```
 
 Stop the stack with:
@@ -128,21 +123,20 @@ This Compose command builds LAD from the checked-out source. The published
 image can also be used directly with `docker run`, but running the full stack
 requires the Fluentd and Qdrant services configured in `compose.yaml`.
 
-Open [http://localhost:8080](http://localhost:8080) for the dashboard. Compose
-starts with the included Apache sample log mounted read-only at
-`/var/log/lad/Apache_2k.log`. To watch another file or directory, mount it in
-the `lad` service in `compose.yaml` and update the Linux path in
-`daemon/config.docker.yaml`. The Docker config uses the Compose service name
-`fluentd`; Qdrant is configured automatically on the internal Compose network.
+Open [http://localhost:8080](http://localhost:8080) for the dashboard. On its
+first start, LAD creates `logs/lad.log` for new log lines. To watch another
+file or directory, mount it in the `lad` service in `compose.yaml` and update
+the Linux path in `daemon/config.docker.yaml`. The Docker config uses the
+Compose service name `fluentd`; Qdrant is configured automatically on the
+internal Compose network.
 Set `DASHBOARD_PORT` in `.env` to change the host port. Logs and Qdrant data
 persist in named Docker volumes across restarts.
 
 Stop with Ctrl+C, or run `docker compose down`. Use `docker compose down -v`
 only when you also want to remove the persisted log and Qdrant data volumes.
 
-To ingest a historical reference corpus while the Compose services are
-running, execute the following command. It uses the mounted Apache sample by
-default; you can pass another file path as an argument:
+To ingest the watched log file as a historical reference corpus while the
+Compose services are running, execute:
 
 ```bash
 docker compose exec lad python scripts/log_ingestion.py

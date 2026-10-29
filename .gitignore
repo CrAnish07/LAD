@@ -3,3 +3,4 @@ daemon/logs/dashboard_events.jsonl
 __pycache__/
 *.py[cod]
 daemon/logs/*.log
+logs/
