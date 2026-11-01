@@ -16,6 +16,18 @@ from rag_chain import get_analyzers
 from log_filter import fingerprint, triage
 
 
+MAX_MODEL_LIMIT_RETRIES = max(0, int(os.getenv("MODEL_LIMIT_RETRIES", "3")))
+MODEL_LIMIT_RETRY_BASE_SECONDS = max(1, int(os.getenv("MODEL_LIMIT_RETRY_BASE_SECONDS", "30")))
+
+
+def _is_model_limit_error(error):
+    message = str(error).lower()
+    return any(marker in message for marker in (
+        "429", "rate limit", "rate_limit", "quota", "resource_exhausted",
+        "too many requests", "resource exhausted", "model capacity",
+    ))
+
+
 def parse_classification(response):
     """Decode classifier JSON, including JSON wrapped in Markdown fences."""
     text = str(response).strip()
@@ -52,13 +64,19 @@ class AnalysisQueue:
     def get(self, worker_name):
         with self.condition:
             while True:
+                now = time.monotonic()
+                next_ready = None
                 for index, task in enumerate(self.pending):
-                    if worker_name not in task["tried"]:
+                    if worker_name not in task["tried"] and task.get("ready_at", 0) <= now:
                         del self.pending[index]
                         return task
+                    if worker_name not in task["tried"]:
+                        ready_at = task.get("ready_at", 0)
+                        next_ready = ready_at if next_ready is None else min(next_ready, ready_at)
                 if self.stopping and not self.pending:
                     return None
-                self.condition.wait()
+                timeout = max(0, next_ready - now) if next_ready is not None else None
+                self.condition.wait(timeout)
 
     def finish(self):
         with self.condition:
@@ -140,7 +158,10 @@ def main():
                 analysis_queue.finish()
             except Exception as exc:
                 remaining_workers = set(analyzers) - task["tried"]
-                if remaining_workers:
+                if remaining_workers and not (
+                    _is_model_limit_error(exc)
+                    and task.get("limit_retries", 0) >= MAX_MODEL_LIMIT_RETRIES
+                ):
                     error = f"{worker_name} failed: {exc}"
                     update_group(task["events"], {
                         "status": "queued",
@@ -150,6 +171,24 @@ def main():
                         "error": error,
                     })
                     print(f"{error}; retrying with another model worker.", flush=True)
+                    analysis_queue.put(task)
+                elif _is_model_limit_error(exc) and task.get("limit_retries", 0) < MAX_MODEL_LIMIT_RETRIES:
+                    task["limit_retries"] = task.get("limit_retries", 0) + 1
+                    task["tried"].clear()
+                    wait = MODEL_LIMIT_RETRY_BASE_SECONDS * (2 ** (task["limit_retries"] - 1))
+                    task["ready_at"] = time.monotonic() + wait
+                    retry_message = (
+                        f"Model rate/quota limit reached; retrying all configured workers "
+                        f"in {wait}s (retry {task['limit_retries']}/{MAX_MODEL_LIMIT_RETRIES})."
+                    )
+                    update_group(task["events"], {
+                        "status": "queued",
+                        "model": None,
+                        "analysis_source": "llm",
+                        "models_tried": sorted(task["tried"]),
+                        "error": retry_message,
+                    })
+                    print(f"{retry_message} Last error: {exc}", flush=True)
                     analysis_queue.put(task)
                 else:
                     update_group(task["events"], {

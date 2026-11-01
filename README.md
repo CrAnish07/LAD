@@ -189,7 +189,11 @@ docker compose exec lad python scripts/log_ingestion.py /path/in/container/appli
    ```
 
    Each configured provider/model pair gets a concurrent worker, and failed
-   logs are retried by other configured workers at most once each. Requesty
+   logs are retried by other configured workers at most once each. When all
+   workers report a model rate or quota limit, LAD requeues the group and
+   retries all workers three more times with 30, 60, and 120 second delays.
+   Set `MODEL_LIMIT_RETRIES` and `MODEL_LIMIT_RETRY_BASE_SECONDS` to change
+   those defaults. Requesty
    uses its OpenAI-compatible API at `https://router.requesty.ai/v1`; its free
    plan currently allows 200 requests per day, so it is best used as an
    additional worker for selected/anomalous log groups rather than every raw
@@ -254,9 +258,11 @@ source for `LOG_GROUP_WINDOW_SECONDS` (default five seconds) and applies local
 rules. Routine health/probe/debug logs are marked filtered, common error
 patterns are classified by rules, and critical or uncertain groups are sent to
 the configured model workers. Every raw log still appears in the dashboard;
-group occurrence counts and the analysis source are shown per event. If all
-model workers fail, the event is marked `Needs review` with a rules-based
-fallback. Gemini is still used for embeddings only for groups routed to model
+group occurrence counts and the analysis source are shown per event. Temporary
+model rate or quota limits keep groups queued while LAD retries all configured
+workers with exponential delays. If retries and all other model workers fail,
+the event is marked `Needs review` with a rules-based fallback. Gemini is still
+used for embeddings only for groups routed to model
 analysis; if embedding/retrieval is unavailable, chat analysis continues
 without retrieved context.
 
