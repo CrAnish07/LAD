@@ -5,7 +5,7 @@ Log Anomaly Detector (LAD): Real-time system for semantic log monitoring and ano
 
 Real-time log monitoring and semantic anomaly detection using Fluentd and Qdrant, with configurable parallel workers for Gemini, Groq, NanoGPT, Requesty, OpenRouter, and Cloudflare Workers AI.
 
-![Vector embedding search diagram](docs/assets/vector-embedding-search.webp)
+![Illustration of LAD turning log streams into a live monitoring view](docs/assets/lad-hero.png)
 
 ---
 
@@ -16,6 +16,16 @@ LAD helps you continuously monitor log files and detect anomalies (errors, warni
 - Embedding log lines using semantic embeddings (Google Gemini).  
 - Storing embeddings in Qdrant vector database.  
 - Searching an explicitly ingested historical reference corpus, then running model workers to classify live log lines and suggest context/fixes. Live events are not added to that corpus during analysis.
+
+## How LAD works
+
+[![LAD workflow from watched log files through triage, historical context, model analysis, and the dashboard](docs/assets/lad-architecture.svg)](https://miro.com/app/board/uXjVES2pGVQ=/)
+
+The diagram is available as an editable [Miro workflow board](https://miro.com/app/board/uXjVES2pGVQ=/).
+
+For a closer look at semantic retrieval from the historical reference corpus:
+
+![Vector embedding search diagram](docs/assets/vector-embedding-search.webp)
 
 --- 
 
@@ -237,6 +247,8 @@ The script will:
   press Ctrl+C. Both shutdown paths stop the services and drain flushed logs.
 
 ## Dashboard
+
+![Illustrative preview of the LAD dashboard and recent classified log events](docs/assets/lad-dashboard-preview.svg)
 
 Start LAD with `./operate.sh` (or `./operate.sh <seconds>` for a timed run), then
 open a second terminal and run:
