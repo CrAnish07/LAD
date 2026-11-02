@@ -6,12 +6,22 @@ import os
 import platform
 import sys
 import time
+import json
+from pathlib import Path
 
 from fluent import sender
 
 def load_config(config_path):
     with open(config_path, "r") as f:
         data = yaml.safe_load(f) or {}
+
+    settings_path = Path(__file__).resolve().parent.parent / "config" / "model_settings.json"
+    try:
+        saved = json.loads(settings_path.read_text(encoding="utf-8"))
+        if saved.get("setup_complete") and saved.get("log_paths"):
+            return saved["log_paths"]
+    except (FileNotFoundError, json.JSONDecodeError, AttributeError):
+        pass
 
     # Prefer paths configured for this OS; keep the old `logs` key as a
     # fallback so existing config files continue to work.

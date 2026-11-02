@@ -23,10 +23,12 @@ services:
       NANOGPT_API_KEY: ${NANOGPT_API_KEY:-}
       REQUESTY_API_KEY: ${REQUESTY_API_KEY:-}
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
       CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
       CLOUDFLARE_AUTH_TOKEN: ${CLOUDFLARE_AUTH_TOKEN:-}
     volumes:
       - lad_logs:/app/daemon/logs
+      - lad_config:/app/config
       - ./logs:/var/log/lad
       - ./daemon/config.docker.yaml:/app/daemon/config.docker.yaml:ro
 
@@ -50,4 +52,5 @@ services:
 
 volumes:
   lad_logs:
+  lad_config:
   qdrant_storage:

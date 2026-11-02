@@ -19,6 +19,7 @@ services:
       QDRANT_HOST: http://qdrant:6333
     volumes:
       - lad_logs:/app/daemon/logs
+      - lad_config:/app/config
       - ./logs:/var/log/lad
     # Keep the generic input path compatible with older published images.
     entrypoint: ["/bin/sh", "-c"]
@@ -72,4 +73,5 @@ services:
 
 volumes:
   lad_logs:
+  lad_config:
   qdrant_storage:

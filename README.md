@@ -45,6 +45,7 @@ LAD/
 ├── config/                   # Additional configuration
 ├── consumer/                 # Consumer application
 ├── frontend/
+│   ├── setup.html            # First-run provider and model setup
 │   └── dashboard.html        # Local live dashboard
 ├── tests/                    # Unit and integration tests
 ├── operate.sh                # Starts Fluentd and Python processes
@@ -244,11 +245,22 @@ open a second terminal and run:
 venv/bin/python scripts/dashboard.py
 ```
 
-Open [http://127.0.0.1:8080](http://127.0.0.1:8080) to see analyzed events,
-detected anomalies, the recent event stream, and Fluentd/Qdrant reachability.
-The dashboard refreshes every three seconds. It reads analysis results from
+Open [http://127.0.0.1:8080](http://127.0.0.1:8080) to complete the first-run
+setup. Once saved, LAD makes the dashboard available at
+[http://127.0.0.1:8080/dashboard](http://127.0.0.1:8080/dashboard). The
+dashboard refreshes every three seconds. It reads analysis results from
 `daemon/logs/dashboard_events.jsonl`; queued and processing events show the
 assigned model, and completed events show the model that produced the result.
+The setup wizard lets you choose the watched log file, shows provider key
+readiness, and lets you choose a primary analysis model with an optional
+fallback. In Docker, enter the path as it appears inside the container after
+mounting the host log file. Add provider credentials to `.env` before
+completing setup. The setup page never asks for or displays API keys;
+saved model settings are stored in `config/model_settings.json` (or the
+`lad_config` Docker volume). Restart LAD after saving to apply the model
+selection. Anthropic Claude API models can be selected with
+`ANTHROPIC_API_KEY` set in `.env`; requests go directly from your LAD instance
+to Anthropic.
 Results appear as the pipeline processes new incoming log lines. Set
 `DASHBOARD_HOST` and `DASHBOARD_PORT` to change the
 local bind address and port.

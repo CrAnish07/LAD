@@ -1,6 +1,7 @@
 """Provider-specific log classifiers used by the analysis worker pool."""
 import os
 import json
+from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
 from google import genai
 from google.genai import types
@@ -44,10 +45,17 @@ def get_analyzers():
     requesty:nvidia/nemotron-3.5-lightning-30b-a3b,
     openrouter:recursive/flint-v1.0:free.
     """
+    settings_path = Path(__file__).resolve().parent.parent / "config" / "model_settings.json"
     configured = os.getenv(
         "ANALYSIS_WORKERS",
         "gemini:gemini-3.8-flash,groq:qwen/qwen3.8-27b",
     )
+    try:
+        saved_settings = json.loads(settings_path.read_text(encoding="utf-8"))
+        if isinstance(saved_settings.get("workers"), list) and saved_settings["workers"]:
+            configured = ",".join(saved_settings["workers"])
+    except (FileNotFoundError, json.JSONDecodeError, AttributeError):
+        pass
     workers = {}
     for item in configured.split(","):
         item = item.strip()
@@ -198,6 +206,37 @@ def get_analyzers():
                 return content
 
             workers[worker_name] = (model, classify_openrouter)
+        elif provider == "anthropic":
+            api_key = os.getenv("ANTHROPIC_API_KEY")
+            if not api_key:
+                raise RuntimeError("Set ANTHROPIC_API_KEY to enable the Anthropic Claude worker.")
+            import requests
+
+            def classify_anthropic(inputs, model=model, api_key=api_key):
+                response = requests.post(
+                    os.getenv("ANTHROPIC_BASE_URL", "https://api.anthropic.com") + "/v1/messages",
+                    headers={
+                        "x-api-key": api_key,
+                        "anthropic-version": "2023-06-01",
+                        "content-type": "application/json",
+                    },
+                    json={
+                        "model": model,
+                        "system": SYSTEM_INSTRUCTIONS,
+                        "messages": [{"role": "user", "content": _prompt(inputs)}],
+                        "max_tokens": 500,
+                        "temperature": 0.2,
+                    },
+                    timeout=60,
+                )
+                response.raise_for_status()
+                blocks = response.json().get("content", [])
+                content = "\n".join(block.get("text", "") for block in blocks if block.get("type") == "text")
+                if not content:
+                    raise RuntimeError("Anthropic completed without returning classification text.")
+                return content
+
+            workers[worker_name] = (model, classify_anthropic)
         elif provider == "cloudflare":
             account_id = os.getenv("CLOUDFLARE_ACCOUNT_ID")
             api_token = os.getenv("CLOUDFLARE_AUTH_TOKEN")
@@ -281,7 +320,7 @@ def get_analyzers():
             workers[worker_name] = (model, classify_cloudflare)
         else:
             raise ValueError(
-                f"Unsupported analysis provider {provider!r}; use gemini, groq, nanogpt, requesty, openrouter, or cloudflare."
+                f"Unsupported analysis provider {provider!r}; use gemini, groq, nanogpt, requesty, openrouter, anthropic, or cloudflare."
             )
 
     if not workers:
