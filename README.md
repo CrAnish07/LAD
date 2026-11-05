@@ -290,6 +290,18 @@ used for embeddings only for groups routed to model
 analysis; if embedding/retrieval is unavailable, chat analysis continues
 without retrieved context.
 
+### Local inference endpoint
+
+LAD can send analysis requests to an OpenAI-compatible local inference engine
+exposed at the supplied Cloudflare tunnel. Set `LOCAL_LLM_MODEL` in `.env` to
+the exact model ID served by that engine. The default base URL is
+`https://arbitrary-knee-efficiency-intro.trycloudflare.com/v1`; override it
+with `LOCAL_LLM_BASE_URL` if the API is hosted elsewhere. Set
+`LOCAL_LLM_API_KEY` only when the endpoint requires authentication, then choose
+the model shown as **Local inference** in the setup page. The API call sends
+the log group and retrieved historical context to that endpoint. LAD still
+uses Gemini for embeddings and historical context search.
+
 NanoGPT uses its OpenAI-compatible API at `https://nano-gpt.com/api/v1` by
 default; override it with `NANOGPT_BASE_URL` if needed. Cloudflare Clairic uses
 the Workers AI REST endpoint and requires `CLOUDFLARE_ACCOUNT_ID` plus a token

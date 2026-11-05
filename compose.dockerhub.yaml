@@ -17,6 +17,9 @@ services:
       FLUENTD_HOST: fluentd
       FLUENTD_PORT: 24224
       QDRANT_HOST: http://qdrant:6333
+      LOCAL_LLM_BASE_URL: ${LOCAL_LLM_BASE_URL:-https://arbitrary-knee-efficiency-intro.trycloudflare.com/v1}
+      LOCAL_LLM_API_KEY: ${LOCAL_LLM_API_KEY:-}
+      LOCAL_LLM_MODEL: ${LOCAL_LLM_MODEL:-}
     volumes:
       - lad_logs:/app/daemon/logs
       - lad_config:/app/config

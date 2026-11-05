@@ -206,6 +206,38 @@ def get_analyzers():
                 return content
 
             workers[worker_name] = (model, classify_openrouter)
+        elif provider == "local":
+            # OpenAI-compatible local inference servers (vLLM, llama.cpp, LM Studio, etc.)
+            # can be exposed through LOCAL_LLM_BASE_URL. The supplied default is the
+            # user's Cloudflare tunnel; keep its API path configurable for other servers.
+            from openai import OpenAI
+
+            client = OpenAI(
+                api_key=os.getenv("LOCAL_LLM_API_KEY") or "not-needed",
+                base_url=os.getenv(
+                    "LOCAL_LLM_BASE_URL",
+                    "https://arbitrary-knee-efficiency-intro.trycloudflare.com/v1",
+                ),
+                timeout=60.0,
+                max_retries=0,
+            )
+
+            def classify_local(inputs, client=client, model=model):
+                result = client.chat.completions.create(
+                    model=model,
+                    messages=[
+                        {"role": "system", "content": SYSTEM_INSTRUCTIONS + " Return valid JSON only; do not use Markdown."},
+                        {"role": "user", "content": _prompt(inputs)},
+                    ],
+                    temperature=0.2,
+                    max_tokens=500,
+                )
+                content = result.choices[0].message.content
+                if not content:
+                    raise RuntimeError("Local inference server completed without returning classification text.")
+                return content
+
+            workers[worker_name] = (model, classify_local)
         elif provider == "anthropic":
             api_key = os.getenv("ANTHROPIC_API_KEY")
             if not api_key:
@@ -320,7 +352,7 @@ def get_analyzers():
             workers[worker_name] = (model, classify_cloudflare)
         else:
             raise ValueError(
-                f"Unsupported analysis provider {provider!r}; use gemini, groq, nanogpt, requesty, openrouter, anthropic, or cloudflare."
+                f"Unsupported analysis provider {provider!r}; use gemini, groq, nanogpt, requesty, openrouter, local, anthropic, or cloudflare."
             )
 
     if not workers:

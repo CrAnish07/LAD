@@ -22,6 +22,7 @@ PROVIDER_KEYS = {
     "openrouter": ("OPENROUTER_API_KEY",),
     "anthropic": ("ANTHROPIC_API_KEY",),
     "cloudflare": ("CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_AUTH_TOKEN"),
+    "local": ("LOCAL_LLM_MODEL",),
 }
 load_dotenv(ROOT / ".env")
 
@@ -65,7 +66,7 @@ def model_settings():
             else all(env_key_set(key) for key in keys)
         )
         providers.append({"id": provider, "ready": configured, "missing": [] if configured else list(keys)})
-    return {"workers": workers, "providers": providers, "log_paths": log_paths, "saved": SETTINGS_FILE.exists(), "setup_complete": setup_complete}
+    return {"workers": workers, "providers": providers, "log_paths": log_paths, "saved": SETTINGS_FILE.exists(), "setup_complete": setup_complete, "local_model": os.getenv("LOCAL_LLM_MODEL", "").strip()}
 
 
 def service_status():
@@ -185,6 +186,7 @@ class Handler(BaseHTTPRequestHandler):
                 key for worker in normalized
                 for key in PROVIDER_KEYS[worker.split(":", 1)[0]]
                 if not env_key_set(key)
+                and worker.split(":", 1)[0] != "local"
             })
             if not any(env_key_set(key) for key in PROVIDER_KEYS["gemini"]):
                 missing.append("GOOGLE_API_KEY (required for log embeddings)")

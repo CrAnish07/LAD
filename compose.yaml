@@ -26,6 +26,9 @@ services:
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
       CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
       CLOUDFLARE_AUTH_TOKEN: ${CLOUDFLARE_AUTH_TOKEN:-}
+      LOCAL_LLM_BASE_URL: ${LOCAL_LLM_BASE_URL:-https://arbitrary-knee-efficiency-intro.trycloudflare.com/v1}
+      LOCAL_LLM_API_KEY: ${LOCAL_LLM_API_KEY:-}
+      LOCAL_LLM_MODEL: ${LOCAL_LLM_MODEL:-}
     volumes:
       - lad_logs:/app/daemon/logs
       - lad_config:/app/config
